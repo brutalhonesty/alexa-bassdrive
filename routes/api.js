@@ -42,7 +42,7 @@ router.post('/archive', function (req, res) {
         var latestListingHuman = latestListing.time_ago;
         var latestListingDate = moment(latestListing.published_at).utc().format('dddd, MMMM Do YYYY');
         var latestListingTime = moment(latestListing.published_at).utc().format('hA');
-        alexa.response('The latest archive is dated as ' + latestListingHuman + ' on ' + latestListingDate + ' at ' + latestListingTime + ' UTC.', {
+        alexa.response('The latest archive is dated as ' + latestListingHuman + ' on ' + latestListingDate + ' at ' + latestListingTime + ', coordinated universal time.', {
           title: 'Bassdrive',
           subtitle: 'Latest Archive',
           content: latestListingHuman + ' - ' + latestListingDate
