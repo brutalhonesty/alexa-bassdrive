@@ -40,9 +40,9 @@ router.post('/archive', function (req, res) {
         }
         var latestListing = listings[0];
         var latestListingHuman = latestListing.time_ago;
-        var latestListingDate = moment(latestListing.published_at).format('dddd, MMMM Do YYYY');
-        var latestListingTime = moment(latestListing.published_at).format('hA zz');
-        alexa.response('The latest archive is dated as ' + latestListingHuman + ' on ' + latestListingDate + ' at ' + latestListingTime, {
+        var latestListingDate = moment(latestListing.published_at).utc().format('dddd, MMMM Do YYYY');
+        var latestListingTime = moment(latestListing.published_at).utc().format('hA zz');
+        alexa.response('The latest archive is dated as ' + latestListingHuman + ' on ' + latestListingDate + ' at ' + latestListingTime + ' UTC.', {
           title: 'Bassdrive',
           subtitle: 'Latest Archive',
           content: latestListingHuman + ' - ' + latestListingDate
