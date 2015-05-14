@@ -38,11 +38,12 @@ router.post('/archive', function (req, res) {
           return res.status(500).jsonp({message: 'Could not process intention.'});
         }
         var latestListing = listings[0];
-        var latestListingDate = latestListing.time_ago;
-        alexa.response('The latest archive is dated as ' + latestListingDate, {
+        var latestListingHuman = latestListing.time_ago;
+        var latestListingDate = moment(latestListing.published_at).format('dddd, MMMM Do YYYY');
+        alexa.response('The latest archive is dated as ' + latestListingHuman + 'on ' + latestListingDate + ' PST.', {
           title: 'Bassdrive',
           subtitle: 'Latest Archive',
-          content: latestListingDate
+          content: latestListingHuman + ' - ' + latestListingDate
         }, true, function (error, response) {
           if(error) {
             return res.status(500).jsonp(error);
