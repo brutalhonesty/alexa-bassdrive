@@ -8,7 +8,7 @@ var router = express.Router();
 
 router.post('/archive', function (req, res) {
   if(!(req.body.request && req.body.request.type)) {
-    return res.jsonp({message: 'Not an echo request.'});
+    return res.status(400).jsonp({message: 'Probably not an Amazon Echo request.'});
   }
   var sessionId;
   var userId;
